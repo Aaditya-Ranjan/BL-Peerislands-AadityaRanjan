@@ -1,0 +1,519 @@
+//LEVEL 2
+
+/*
+Create a program to find the factors of a number, store them in an array
+and find sum, product and sum of squares of factors.
+*/
+
+import java.util.Scanner;
+
+public class FactorsProgram {
+
+    public static int[] findFactors(int n) {
+        int count = 0;
+
+        // first loop to count factors
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0)
+                count++;
+        }
+
+        int[] factors = new int[count];
+        int index = 0;
+
+        // second loop to store factors
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0)
+                factors[index++] = i;
+        }
+
+        return factors;
+    }
+
+    public static int sumOfFactors(int[] factors) {
+        int sum = 0;
+        for (int f : factors)
+            sum += f;
+        return sum;
+    }
+
+    public static long productOfFactors(int[] factors) {
+        long product = 1;
+        for (int f : factors)
+            product *= f;
+        return product;
+    }
+
+    public static double sumOfSquares(int[] factors) {
+        double sum = 0;
+        for (int f : factors)
+            sum += Math.pow(f, 2);
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[] factors = findFactors(n);
+
+        System.out.println("Factors:");
+        for (int f : factors)
+            System.out.print(f + " ");
+
+        System.out.println("\nSum = " + sumOfFactors(factors));
+        System.out.println("Product = " + productOfFactors(factors));
+        System.out.println("Sum of Squares = " + sumOfSquares(factors));
+    }
+}
+
+/*
+Find sum of n natural numbers using recursion
+and compare with formula n*(n+1)/2
+*/
+
+import java.util.Scanner;
+
+public class NaturalSum {
+
+    public static int recursiveSum(int n) {
+        if (n == 0)
+            return 0;
+        return n + recursiveSum(n - 1);
+    }
+
+    public static int formulaSum(int n) {
+        return n * (n + 1) / 2;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if (n <= 0) {
+            System.out.println("Not a natural number");
+            return;
+        }
+
+        int sum1 = recursiveSum(n);
+        int sum2 = formulaSum(n);
+
+        System.out.println("Recursive Sum = " + sum1);
+        System.out.println("Formula Sum = " + sum2);
+    }
+}
+
+/*
+Write a program to check whether a year is a leap year.
+Valid only for year >= 1582.
+*/
+
+import java.util.Scanner;
+
+public class LeapYear {
+
+    public static boolean isLeapYear(int year) {
+        if (year < 1582)
+            return false;
+
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+
+        if (isLeapYear(year))
+            System.out.println("Leap Year");
+        else
+            System.out.println("Not a Leap Year");
+    }
+}
+
+/*
+Write a program to convert units:
+Kilometers to Miles, Miles to Kilometers,
+Meters to Feet and Feet to Meters
+*/
+
+import java.util.Scanner;
+
+public class UnitConverter {
+
+    public static double convertKmToMiles(double km) {
+        return km * 0.621371;
+    }
+
+    public static double convertMilesToKm(double miles) {
+        return miles * 1.60934;
+    }
+
+    public static double convertMetersToFeet(double meters) {
+        return meters * 3.28084;
+    }
+
+    public static double convertFeetToMeters(double feet) {
+        return feet * 0.3048;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter kilometers: ");
+        double km = sc.nextDouble();
+        System.out.println("Miles = " + convertKmToMiles(km));
+
+        System.out.print("Enter miles: ");
+        double miles = sc.nextDouble();
+        System.out.println("Kilometers = " + convertMilesToKm(miles));
+
+        System.out.print("Enter meters: ");
+        double meters = sc.nextDouble();
+        System.out.println("Feet = " + convertMetersToFeet(meters));
+
+        System.out.print("Enter feet: ");
+        double feet = sc.nextDouble();
+        System.out.println("Meters = " + convertFeetToMeters(feet));
+
+        sc.close();
+    }
+}
+
+/*
+Write a program to convert:
+Yards to Feet, Feet to Yards,
+Meters to Inches, Inches to Meters,
+Inches to Centimeters
+*/
+
+import java.util.Scanner;
+
+public class UnitConverter2 {
+
+    public static double convertYardsToFeet(double yards) {
+        return yards * 3;
+    }
+
+    public static double convertFeetToYards(double feet) {
+        return feet * 0.333333;
+    }
+
+    public static double convertMetersToInches(double meters) {
+        return meters * 39.3701;
+    }
+
+    public static double convertInchesToMeters(double inches) {
+        return inches * 0.0254;
+    }
+
+    public static double convertInchesToCm(double inches) {
+        return inches * 2.54;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter yards: ");
+        double yards = sc.nextDouble();
+        System.out.println("Feet = " + convertYardsToFeet(yards));
+
+        System.out.print("Enter feet: ");
+        double feet = sc.nextDouble();
+        System.out.println("Yards = " + convertFeetToYards(feet));
+
+        System.out.print("Enter meters: ");
+        double meters = sc.nextDouble();
+        System.out.println("Inches = " + convertMetersToInches(meters));
+
+        System.out.print("Enter inches: ");
+        double inches = sc.nextDouble();
+        System.out.println("Meters = " + convertInchesToMeters(inches));
+        System.out.println("Centimeters = " + convertInchesToCm(inches));
+
+        sc.close();
+    }
+}
+
+/*
+Write a program to convert:
+Fahrenheit ↔ Celsius,
+Pounds ↔ Kilograms,
+Gallons ↔ Liters
+*/
+
+import java.util.Scanner;
+
+public class UnitConverter3 {
+
+    public static double fahrenheitToCelsius(double f) {
+        return (f - 32) * 5 / 9;
+    }
+
+    public static double celsiusToFahrenheit(double c) {
+        return (c * 9 / 5) + 32;
+    }
+
+    public static double poundsToKg(double pounds) {
+        return pounds * 0.453592;
+    }
+
+    public static double kgToPounds(double kg) {
+        return kg * 2.20462;
+    }
+
+    public static double gallonsToLiters(double gallons) {
+        return gallons * 3.78541;
+    }
+
+    public static double litersToGallons(double liters) {
+        return liters * 0.264172;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Fahrenheit: ");
+        double f = sc.nextDouble();
+        System.out.println("Celsius = " + fahrenheitToCelsius(f));
+
+        System.out.print("Enter Celsius: ");
+        double c = sc.nextDouble();
+        System.out.println("Fahrenheit = " + celsiusToFahrenheit(c));
+
+        System.out.print("Enter pounds: ");
+        double pounds = sc.nextDouble();
+        System.out.println("Kilograms = " + poundsToKg(pounds));
+
+        System.out.print("Enter kilograms: ");
+        double kg = sc.nextDouble();
+        System.out.println("Pounds = " + kgToPounds(kg));
+
+        System.out.print("Enter gallons: ");
+        double gallons = sc.nextDouble();
+        System.out.println("Liters = " + gallonsToLiters(gallons));
+
+        System.out.print("Enter liters: ");
+        double liters = sc.nextDouble();
+        System.out.println("Gallons = " + litersToGallons(liters));
+
+        sc.close();
+    }
+}
+
+/*
+Check whether students can vote based on age
+*/
+
+import java.util.Scanner;
+
+public class StudentVoteChecker {
+
+    public static boolean canStudentVote(int age) {
+        if (age < 0)
+            return false;
+        return age >= 18;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] ages = new int[10];
+
+        for (int i = 0; i < 10; i++) {
+            ages[i] = sc.nextInt();
+            System.out.println(canStudentVote(ages[i]));
+        }
+    }
+}
+
+/*
+Find youngest and tallest among Amar, Akbar and Anthony
+*/
+
+import java.util.Scanner;
+
+public class Friends {
+
+    public static int youngest(int[] ages) {
+        return Math.min(ages[0], Math.min(ages[1], ages[2]));
+    }
+
+    public static int tallest(int[] heights) {
+        return Math.max(heights[0], Math.max(heights[1], heights[2]));
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] age = new int[3];
+        int[] height = new int[3];
+
+        for (int i = 0; i < 3; i++) {
+            age[i] = sc.nextInt();
+            height[i] = sc.nextInt();
+        }
+
+        System.out.println("Youngest age = " + youngest(age));
+        System.out.println("Tallest height = " + tallest(height));
+    }
+}
+
+/*
+Check positive/negative, even/odd and compare first & last elements
+*/
+
+import java.util.Scanner;
+
+public class NumberAnalysis {
+
+    public static boolean isPositive(int n) {
+        return n >= 0;
+    }
+
+    public static boolean isEven(int n) {
+        return n % 2 == 0;
+    }
+
+    public static int compare(int a, int b) {
+        if (a > b) return 1;
+        if (a < b) return -1;
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[5];
+
+        for (int i = 0; i < 5; i++) {
+            arr[i] = sc.nextInt();
+
+            if (isPositive(arr[i])) {
+                if (isEven(arr[i]))
+                    System.out.println("Positive Even");
+                else
+                    System.out.println("Positive Odd");
+            } else {
+                System.out.println("Negative");
+            }
+        }
+
+        int result = compare(arr[0], arr[4]);
+        System.out.println(result);
+    }
+}
+
+/*
+Calculate BMI for 10 persons and determine status
+*/
+
+import java.util.Scanner;
+
+public class BMIProgram {
+
+    public static void calculateBMI(double[][] data) {
+        for (int i = 0; i < 10; i++) {
+            double heightM = data[i][1] / 100;
+            data[i][2] = data[i][0] / (heightM * heightM);
+        }
+    }
+
+    public static String getStatus(double bmi) {
+        if (bmi < 18.5) return "Underweight";
+        if (bmi < 25) return "Normal";
+        if (bmi < 30) return "Overweight";
+        return "Obese";
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double[][] data = new double[10][3];
+
+        for (int i = 0; i < 10; i++) {
+            data[i][0] = sc.nextDouble(); // weight
+            data[i][1] = sc.nextDouble(); // height
+        }
+
+        calculateBMI(data);
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("BMI = " + data[i][2] + " Status = " + getStatus(data[i][2]));
+        }
+    }
+}
+
+/*
+Find roots of quadratic equation ax^2 + bx + c
+*/
+
+import java.util.Scanner;
+
+public class Quadratic {
+
+    public static double[] findRoots(double a, double b, double c) {
+        double delta = b * b - 4 * a * c;
+
+        if (delta < 0)
+            return new double[0];
+
+        if (delta == 0)
+            return new double[]{ -b / (2 * a) };
+
+        double root1 = (-b + Math.sqrt(delta)) / (2 * a);
+        double root2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+        return new double[]{ root1, root2 };
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        double c = sc.nextDouble();
+
+        double[] roots = findRoots(a, b, c);
+
+        for (double r : roots)
+            System.out.println(r);
+    }
+}
+
+/*
+Generate 4 digit random numbers and find average, min and max
+*/
+
+public class RandomNumbers {
+
+    public static int[] generate4DigitRandomArray(int size) {
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++)
+            arr[i] = (int)(Math.random() * 9000) + 1000;
+        return arr;
+    }
+
+    public static double[] findAverageMinMax(int[] numbers) {
+        int min = numbers[0], max = numbers[0];
+        double sum = 0;
+
+        for (int n : numbers) {
+            sum += n;
+            min = Math.min(min, n);
+            max = Math.max(max, n);
+        }
+
+        return new double[]{ sum / numbers.length, min, max };
+    }
+
+    public static void main(String[] args) {
+        int[] nums = generate4DigitRandomArray(5);
+        double[] result = findAverageMinMax(nums);
+
+        System.out.println("Average = " + result[0]);
+        System.out.println("Min = " + result[1]);
+        System.out.println("Max = " + result[2]);
+    }
+}
+
+
+
+
+
+
