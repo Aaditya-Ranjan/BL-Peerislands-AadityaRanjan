@@ -1,0 +1,305 @@
+//LEVEL1
+
+/*
+Write a program to input the Principal, Rate, and Time values and calculate Simple Interest.
+Simple Interest = Principal * Rate * Time / 100
+Take user input and write a method to calculate simple interest.
+*/
+
+import java.util.Scanner;
+
+public class SimpleInterest {
+    public static double calculateSI(double principal, double rate, double time) {
+        return (principal * rate * time) / 100;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Principal: ");
+        double p = sc.nextDouble();
+
+        System.out.print("Enter Rate: ");
+        double r = sc.nextDouble();
+
+        System.out.print("Enter Time: ");
+        double t = sc.nextDouble();
+
+        double si = calculateSI(p, r, t);
+
+        System.out.println("The Simple Interest is " + si +
+                " for Principal " + p + ", Rate of Interest " + r + " and Time " + t);
+    }
+}
+
+/*
+Create a program to find the maximum number of handshakes among N number of students.
+Use the formula (n * (n - 1)) / 2.
+*/
+
+import java.util.Scanner;
+
+public class Handshakes {
+    public static int calculateHandshakes(int n) {
+        return (n * (n - 1)) / 2;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
+
+        System.out.println("Maximum handshakes = " + calculateHandshakes(n));
+    }
+}
+
+/*
+An athlete runs in a triangular park with sides given by the user.
+Find how many rounds are needed to complete a 5 km run.
+*/
+
+import java.util.Scanner;
+
+public class TriangularPark {
+    public static double calculateRounds(double a, double b, double c) {
+        double perimeter = a + b + c;
+        return 5000 / perimeter;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter side 1: ");
+        double a = sc.nextDouble();
+        System.out.print("Enter side 2: ");
+        double b = sc.nextDouble();
+        System.out.print("Enter side 3: ");
+        double c = sc.nextDouble();
+
+        System.out.println("Number of rounds = " + calculateRounds(a, b, c));
+    }
+}
+
+/*
+Write a program to check whether a number is positive, negative or zero.
+Return 1 for positive, -1 for negative and 0 for zero.
+*/
+
+import java.util.Scanner;
+
+public class NumberCheck {
+    public static int checkNumber(int num) {
+        if (num > 0)
+            return 1;
+        else if (num < 0)
+            return -1;
+        else
+            return 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number: ");
+        int num = sc.nextInt();
+
+        System.out.println(checkNumber(num));
+    }
+}
+
+
+import java.util.Scanner;
+
+public class SpringSeason {
+    public static boolean isSpring(int month, int day) {
+        return (month == 3 && day >= 20) ||
+               (month == 4) ||
+               (month == 5) ||
+               (month == 6 && day <= 20);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter month: ");
+        int month = sc.nextInt();
+
+        System.out.print("Enter day: ");
+        int day = sc.nextInt();
+
+        if (isSpring(month, day))
+            System.out.println("Its a Spring Season");
+        else
+            System.out.println("Not a Spring Season");
+    }
+}
+
+/*
+Write a program to find the sum of n natural numbers using loop.
+*/
+
+import java.util.Scanner;
+
+public class SumNaturalNumbers {
+    public static int sum(int n) {
+        int total = 0;
+        for (int i = 1; i <= n; i++) {
+            total += i;
+        }
+        return total;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+
+        System.out.println("Sum = " + sum(n));
+    }
+}
+
+/*
+Write a program to find the smallest and largest of three numbers
+using a single method.
+*/
+
+import java.util.Scanner;
+
+public class SmallestLargest {
+    public static int[] findSmallestAndLargest(int a, int b, int c) {
+        int smallest = Math.min(a, Math.min(b, c));
+        int largest = Math.max(a, Math.max(b, c));
+        return new int[]{smallest, largest};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        int[] result = findSmallestAndLargest(a, b, c);
+
+        System.out.println("Smallest = " + result[0]);
+        System.out.println("Largest = " + result[1]);
+    }
+}
+
+
+/*
+Write a program to take two numbers and print their quotient and remainder.
+*/
+
+import java.util.Scanner;
+
+public class QuotientRemainder {
+    public static int[] findRemainderAndQuotient(int number, int divisor) {
+        return new int[]{number / divisor, number % divisor};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int number = sc.nextInt();
+        int divisor = sc.nextInt();
+
+        int[] result = findRemainderAndQuotient(number, divisor);
+
+        System.out.println("Quotient = " + result[0]);
+        System.out.println("Remainder = " + result[1]);
+    }
+}
+
+
+/*
+Create a program to divide N chocolates among M children
+and display chocolates per child and remaining chocolates.
+*/
+
+import java.util.Scanner;
+
+public class Chocolates {
+    public static int[] distribute(int chocolates, int children) {
+        return new int[]{chocolates / children, chocolates % children};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int chocolates = sc.nextInt();
+        int children = sc.nextInt();
+
+        int[] result = distribute(chocolates, children);
+
+        System.out.println("Each child gets = " + result[0]);
+        System.out.println("Remaining chocolates = " + result[1]);
+    }
+}
+
+
+/*
+Write a program to calculate wind chill temperature
+using the given formula.
+*/
+
+public class WindChill {
+    public static double calculateWindChill(double temp, double windSpeed) {
+        return 35.74 + 0.6215 * temp +
+               (0.4275 * temp - 35.75) * Math.pow(windSpeed, 0.16);
+    }
+
+    public static void main(String[] args) {
+        double temp = Double.parseDouble(args[0]);
+        double windSpeed = Double.parseDouble(args[1]);
+
+        System.out.println("Wind Chill = " + calculateWindChill(temp, windSpeed));
+    }
+}
+
+
+/*
+Write a program to calculate sine, cosine and tangent
+using Math class by converting degrees to radians.
+*/
+
+import java.util.Scanner;
+
+public class Trigonometry {
+    public static double[] calculateTrigonometricFunctions(double angle) {
+        double rad = Math.toRadians(angle);
+        return new double[]{
+                Math.sin(rad),
+                Math.cos(rad),
+                Math.tan(rad)
+        };
+    }
+
+    public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+        double angle = sc.nextDouble();
+
+        double[] result = calculateTrigonometricFunctions(angle);
+
+        System.out.println("Sin = " + result[0]);
+        System.out.println("Cos = " + result[1]);
+        System.out.println("Tan = " + result[2]);
+	
+	sc.close();
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
