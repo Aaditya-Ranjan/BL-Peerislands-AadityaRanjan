@@ -1,0 +1,365 @@
+//LEVEL 1
+
+// Question: Write a program to compare two strings using charAt() method and check the result with String equals() method.
+
+import java.util.Scanner;
+
+class CompareStrings {
+
+    static boolean compareUsingCharAt(String s1, String s2) {
+        if (s1.length() != s2.length()) return false;
+
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first string: ");
+        String s1 = sc.next();
+
+        System.out.print("Enter second string: ");
+        String s2 = sc.next();
+
+        boolean userResult = compareUsingCharAt(s1, s2);
+        boolean builtInResult = s1.equals(s2);
+
+        System.out.println("User-defined comparison: " + userResult);
+        System.out.println("Built-in equals(): " + builtInResult);
+    }
+}
+
+
+// Question: Write a program to create a substring using charAt() and compare with built-in substring().
+
+import java.util.Scanner;
+
+class SubstringCompare {
+
+    static String createSubstring(String text, int start, int end) {
+        String result = "";
+        for (int i = start; i < end; i++) {
+            result += text.charAt(i);
+        }
+        return result;
+    }
+
+    static boolean compareStrings(String a, String b) {
+        if (a.length() != b.length()) return false;
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != b.charAt(i)) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter text: ");
+        String text = sc.next();
+
+        System.out.print("Enter start index: ");
+        int start = sc.nextInt();
+
+        System.out.print("Enter end index: ");
+        int end = sc.nextInt();
+
+        String userSub = createSubstring(text, start, end);
+        String builtInSub = text.substring(start, end);
+
+        boolean result = compareStrings(userSub, builtInSub);
+
+        System.out.println("User substring: " + userSub);
+        System.out.println("Built-in substring: " + builtInSub);
+        System.out.println("Comparison result: " + result);
+    }
+}
+
+
+// Question: Write a program to return all characters using user-defined method and compare with toCharArray().
+
+import java.util.Scanner;
+
+class CharArrayCompare {
+
+    static char[] getChars(String text) {
+        char[] arr = new char[text.length()];
+        for (int i = 0; i < text.length(); i++) {
+            arr[i] = text.charAt(i);
+        }
+        return arr;
+    }
+
+    static boolean compareArrays(char[] a, char[] b) {
+        if (a.length != b.length) return false;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter text: ");
+        String text = sc.next();
+
+        char[] userArr = getChars(text);
+        char[] builtInArr = text.toCharArray();
+
+        boolean result = compareArrays(userArr, builtInArr);
+
+        System.out.println("Comparison result: " + result);
+    }
+}
+
+
+// Question: Write a program to demonstrate NullPointerException.
+
+class NullPointerDemo {
+
+    static void generateException() {
+        String text = null;
+        text.length(); // Exception
+    }
+
+    static void handleException() {
+        try {
+            String text = null;
+            text.length();
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException handled!");
+        }
+    }
+
+    public static void main(String[] args) {
+        // generateException();  // uncomment to see crash
+        handleException();
+    }
+}
+
+
+// Question: Write a program to demonstrate StringIndexOutOfBoundsException.
+
+import java.util.Scanner;
+
+class StringIndexDemo {
+
+    static void generateException(String text) {
+        System.out.println(text.charAt(100));
+    }
+
+    static void handleException(String text) {
+        try {
+            System.out.println(text.charAt(100));
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("StringIndexOutOfBoundsException handled!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.next();
+
+        // generateException(text);
+        handleException(text);
+    }
+}
+
+// Question: Write a program to demonstrate IllegalArgumentException.
+
+import java.util.Scanner;
+
+class IllegalArgDemo {
+
+    static void generateException(String text) {
+        text.substring(5, 2);
+    }
+
+    static void handleException(String text) {
+        try {
+            text.substring(5, 2);
+        } catch (IllegalArgumentException e) {
+            System.out.println("IllegalArgumentException handled!");
+        } catch (RuntimeException e) {
+            System.out.println("Generic RuntimeException handled!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.next();
+
+        // generateException(text);
+        handleException(text);
+    }
+}
+
+
+// Question: Write a program to demonstrate NumberFormatException.
+
+import java.util.Scanner;
+
+class NumberFormatDemo {
+
+    static void generateException(String text) {
+        int num = Integer.parseInt(text);
+    }
+
+    static void handleException(String text) {
+        try {
+            int num = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormatException handled!");
+        } catch (RuntimeException e) {
+            System.out.println("Generic RuntimeException handled!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number text: ");
+        String text = sc.next();
+
+        // generateException(text);
+        handleException(text);
+    }
+}
+
+// Question: Write a program to demonstrate ArrayIndexOutOfBoundsException.
+
+import java.util.Scanner;
+
+class ArrayIndexDemo {
+
+    static void generateException(String[] arr) {
+        System.out.println(arr[10]);
+    }
+
+    static void handleException(String[] arr) {
+        try {
+            System.out.println(arr[10]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException handled!");
+        } catch (RuntimeException e) {
+            System.out.println("Generic RuntimeException handled!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size: ");
+        int n = sc.nextInt();
+
+        String[] names = new String[n];
+        for (int i = 0; i < n; i++) {
+            names[i] = sc.next();
+        }
+
+        // generateException(names);
+        handleException(names);
+    }
+}
+
+
+// Question: Write a program to convert complete text to uppercase and compare results.
+
+import java.util.Scanner;
+
+class UpperCaseCompare {
+
+    static String toUpper(String text) {
+        String result = "";
+        for (int i = 0; i < text.length(); i++) {
+            char ch = text.charAt(i);
+            if (ch >= 'a' && ch <= 'z') {
+                ch = (char)(ch - 32);
+            }
+            result += ch;
+        }
+        return result;
+    }
+
+    static boolean compare(String a, String b) {
+        if (a.length() != b.length()) return false;
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != b.charAt(i)) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter text: ");
+        String text = sc.nextLine();
+
+        String userUpper = toUpper(text);
+        String builtInUpper = text.toUpperCase();
+
+        boolean result = compare(userUpper, builtInUpper);
+
+        System.out.println("User Uppercase: " + userUpper);
+        System.out.println("Built-in Uppercase: " + builtInUpper);
+        System.out.println("Comparison result: " + result);
+    }
+}
+
+// Question: Write a program to convert complete text to lowercase and compare results.
+
+import java.util.Scanner;
+
+class LowerCaseCompare {
+
+    static String toLower(String text) {
+        String result = "";
+        for (int i = 0; i < text.length(); i++) {
+            char ch = text.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32);
+            }
+            result += ch;
+        }
+        return result;
+    }
+
+    static boolean compare(String a, String b) {
+        if (a.length() != b.length()) return false;
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != b.charAt(i)) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter text: ");
+        String text = sc.nextLine();
+
+        String userLower = toLower(text);
+        String builtInLower = text.toLowerCase();
+
+        boolean result = compare(userLower, builtInLower);
+
+        System.out.println("User Lowercase: " + userLower);
+        System.out.println("Built-in Lowercase: " + builtInLower);
+        System.out.println("Comparison result: " + result);
+    }
+}
+
+
+
+
+
+
+
+
